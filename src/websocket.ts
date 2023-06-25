@@ -73,6 +73,11 @@ export class Websocket {
         this.websocket?.close(code, reason);
     }
 
+    public open(): void {
+        this.closedByUser = false;
+        this.tryConnect();
+    }
+
     public addEventListener<K extends WebsocketEvents>(
         type: K,
         listener: (instance: Websocket, ev: WebsocketEventMap[K]) => any,
